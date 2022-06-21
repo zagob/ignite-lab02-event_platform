@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-zinc-900 text-zinc-100;
+}
+
+/* .title {
+    @apply text-2xl via-violet-500;
+} */
+
+/* // rseat.in/lab-graphcms
+
+// query = buscar dados
+// mutation = criar, alterar ou deletar dados */
