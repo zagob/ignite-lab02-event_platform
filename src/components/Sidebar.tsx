@@ -23,11 +23,51 @@ interface GetLessonsQueryResponse {
   }[];
 }
 
-export function Sidebar() {
+interface SidebarProps {
+  sidebarMobile: boolean;
+}
+
+export function Sidebar({ sidebarMobile }: SidebarProps) {
   const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY);
-  console.log(data);
+
   return (
-    <aside className="w-[348px] bg-gray-700 p-6 border-l border-gray-600">
+    <aside
+      className={`
+      transition
+      duration-700
+      ${
+        sidebarMobile
+          ? `
+      absolute
+      right-0
+      w-full 
+      h-full 
+      z-20 
+      lg:block 
+      lg:w-[348px] 
+      bg-gray-700 
+      p-6 border-l 
+      border-gray-600
+      overflow-hidden
+      translate-x-0
+      `
+          : `
+      absolute
+      translate-x-full
+      h-full
+      w-full 
+      z-20
+      md:right-0
+      lg:block 
+      lg:w-[348px] 
+      bg-gray-700 
+      p-6 border-l 
+      border-gray-600
+      `
+      }
+      
+      `}
+    >
       <span className="font-bold text-2xl pb-6 mb-6 border-b border-gray-500 block">
         Cronograma de aulas
       </span>
