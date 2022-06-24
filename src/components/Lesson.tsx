@@ -2,6 +2,7 @@ import { CheckCircle, Lock } from "phosphor-react";
 import { isPast, format } from "date-fns";
 import ptBR from "date-fns/locale/pt";
 import { Link, useParams } from "react-router-dom";
+import classNames from "classnames";
 
 interface LessonProps {
   title: string;
@@ -72,7 +73,15 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
       >
         <header className="flex items-center justify-between">
           {isLessonAvailable ? (
-            <span className="flex items-center gap-2 text-sm text-blue-500 font-medium">
+            <span
+              className={classNames(
+                "flex items-center gap-2 text-sm font-medium",
+                {
+                  "text-white": isActiveUrlSlug,
+                  "text-blue-500": !isActiveUrlSlug,
+                }
+              )}
+            >
               <CheckCircle size={20} />
               Conteúdo liberado
             </span>
@@ -83,11 +92,26 @@ export function Lesson({ title, slug, availableAt, type }: LessonProps) {
             </span>
           )}
 
-          <span className="text-xs rounded px-2 py-[0.125rem] text-white border border-green-300 font-bold">
+          <span
+            className={classNames(
+              "text-xs rounded px-2 py-[0.125rem] text-white border font-bold",
+              {
+                "border-white": isActiveUrlSlug,
+                "border-green-300": !isActiveUrlSlug,
+              }
+            )}
+          >
             {type === "live" ? "AO VIVO" : "AULA PRÁTICA"}
           </span>
         </header>
-        <strong className={`text-gray-200  mt-5 block`}>{title}</strong>
+        <strong
+          className={classNames("mt-5 block", {
+            "text-white": isActiveUrlSlug,
+            "text-gray-200": !isActiveUrlSlug,
+          })}
+        >
+          {title}
+        </strong>
       </div>
     </Link>
   );

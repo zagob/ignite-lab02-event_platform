@@ -25,16 +25,16 @@ interface GetLessonsQueryResponse {
 
 interface SidebarProps {
   sidebarMobile: boolean;
+  widthMobile: number;
 }
 
-export function Sidebar({ sidebarMobile }: SidebarProps) {
+export function Sidebar({ sidebarMobile, widthMobile }: SidebarProps) {
   const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY);
 
   return (
     <aside
       className={`
-      transition
-      duration-700
+      transition duration-700
       ${
         sidebarMobile
           ? `
@@ -52,12 +52,13 @@ export function Sidebar({ sidebarMobile }: SidebarProps) {
       translate-x-0
       `
           : `
-      absolute
+          ${widthMobile < 1024 ? "absolute h-full" : ""}
+      border
       translate-x-full
-      h-full
+      lg:translate-x-0
       w-full 
       z-20
-      md:right-0
+      lg:right-0
       lg:block 
       lg:w-[348px] 
       bg-gray-700 
