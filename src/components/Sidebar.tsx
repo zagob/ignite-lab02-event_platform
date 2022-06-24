@@ -46,7 +46,7 @@ export function Sidebar({ sidebarMobile, widthMobile }: SidebarProps) {
       lg:block 
       lg:w-[348px] 
       bg-gray-700 
-      p-6 border-l 
+      p-6 border-l
       border-gray-600
       overflow-hidden
       translate-x-0
