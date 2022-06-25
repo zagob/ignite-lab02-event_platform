@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "../components/Header";
+import { NotLessonSelected } from "../components/NotLessonSelected";
 import { Sidebar } from "../components/Sidebar";
 import { Video } from "../components/Video";
 
@@ -15,10 +16,6 @@ export function Event() {
     setSizeWindow(width);
   };
 
-  // useEffect(() => {
-  //   if()
-  // }, [slug])
-
   useEffect(() => {
     window.onresize = resizeHanlder;
   }, []);
@@ -29,6 +26,8 @@ export function Event() {
     }
     if (slug) {
       setOpen(false);
+    } else {
+      setOpen(true);
     }
   }, [sizeWindow, slug]);
 
@@ -40,8 +39,8 @@ export function Event() {
     <div className="flex flex-col min-h-screen overflow-hidden">
       <Header state={open} onChangeStateNavbar={handleChangeStateNavbar} />
       <main className="relative flex flex-1">
-        {slug ? <Video lessonSlug={slug} /> : <div className="flex-1" />}
-        <Sidebar sidebarMobile={open} />
+        {slug ? <Video lessonSlug={slug} /> : <NotLessonSelected />}
+        <Sidebar widthMobile={sizeWindow} sidebarMobile={open} />
       </main>
     </div>
   );

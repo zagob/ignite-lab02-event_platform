@@ -3,8 +3,14 @@ module.exports = {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
+      boxShadow: {
+        shadownleft: '-4px 2px 10px 0px #00B37E'
+      },
+      backgroundImage: {
+        blur: "url(/src/assets/blurbackground.png)",
+      },
       fontFamily: {
-        sans: 'Roboto, sans-serif'
+        sans: "Roboto, sans-serif",
       },
       colors: {
         green: {
